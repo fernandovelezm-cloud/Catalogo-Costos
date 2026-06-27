@@ -1,1 +1,42 @@
-<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fével · Multicolor</title><style>body{margin:0;font-family:system-ui,sans-serif;background:#f7f7f7;}.header{background:#111;color:#fff;padding:18px 20px;}.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:14px;padding:16px;max-width:900px;margin:0 auto;}</style></head><body><div class="header"><div style="font-size:22px;font-weight:800;letter-spacing:1px;">FÉVEL</div><div style="font-size:13px;opacity:.7;">Multicolor · Jun 2026</div></div><div class="grid"><div style="background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.10);overflow:hidden;display:flex;flex-direction:column;"><img src="https://fernandovelezm-cloud.github.io/Catalogo-Costos/54017.jpg" loading="lazy" style="width:100%;aspect-ratio:1;object-fit:cover;background:#f0f0f0;" onerror="this.style.background='#eee';this.src='';"><div style="padding:8px 10px;"><div style="font-size:12px;color:#888;">Ref. 54017</div><div style="color:#1a8a4a;font-weight:700;font-size:15px;">$337.000</div><div style="margin-top:4px;"><span style="display:inline-block;background:#f0f0f0;border-radius:8px;padding:1px 7px;font-size:11px;margin:1px;">T35×1</span> <span style="display:inline-block;background:#f0f0f0;border-radius:8px;padding:1px 7px;font-size:11px;margin:1px;">T39×1</span></div></div></div></div></body></html>
+<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Fével · Multicolor</title><style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,sans-serif;background:#f5f5f5}
+.header{background:#111;color:#fff;padding:16px 18px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:10}
+.header-info{flex:1}
+.header-title{font-size:22px;font-weight:800;letter-spacing:1px}
+.header-sub{font-size:12px;opacity:.65;margin-top:2px}
+.badge-off{background:#e74c3c;color:#fff;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:700;white-space:nowrap}
+.badge-ok{background:#333;color:#fff;padding:3px 10px;border-radius:12px;font-size:12px;font-weight:700;white-space:nowrap}
+.tabs{background:#fff;border-bottom:2px solid #eee;overflow-x:auto;white-space:nowrap;-webkit-overflow-scrolling:touch;position:sticky;top:56px;z-index:9}
+.tab{display:inline-block;padding:10px 16px;font-size:13px;font-weight:600;color:#666;cursor:pointer;border-bottom:3px solid transparent;transition:.15s}
+.tab:hover{color:#111}
+.tab.active{color:#111;border-bottom-color:#111}
+.count{display:inline-block;background:#eee;border-radius:8px;padding:0 6px;font-size:11px;font-weight:700;margin-left:4px;color:#888}
+.tab.active .count{background:#111;color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:14px;padding:16px;max-width:960px;margin:0 auto}
+.card{background:#fff;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.09);overflow:hidden;display:flex;flex-direction:column}
+.card.hidden{display:none}
+.card img{width:100%;aspect-ratio:1;object-fit:cover;background:#f0f0f0}
+.card-body{padding:8px 10px}
+.ref{font-size:11px;color:#aaa;margin-bottom:2px}
+.precio-normal{color:#1a8a4a;font-weight:700;font-size:15px}
+.precio-off{color:#e74c3c;font-weight:700;font-size:15px}
+.precio-tachado{text-decoration:line-through;color:#bbb;font-size:11px;margin-left:3px;font-weight:400}
+.color-label{font-size:11px;color:#777;margin-top:2px}
+.tallas{margin-top:4px;display:flex;flex-wrap:wrap;gap:2px}
+.talla-chip{background:#f0f0f0;border-radius:8px;padding:1px 6px;font-size:10px;color:#555}
+.empty{text-align:center;color:#aaa;padding:48px 16px;font-size:14px;display:none}
+</style></head><body><div class="header"><div class="header-info"><div class="header-title">FÉVEL</div><div class="header-sub">Multicolor · Jun 2026</div></div></div><div class="tabs"><span class="tab active" data-g="Todas" onclick="filtrar('Todas')">Todas<span class="count">1</span></span><span class="tab" data-g="Tenis" onclick="filtrar('Tenis')">Tenis<span class="count">1</span></span></div><div class="grid"><div class="card" data-g="Tenis"><img src="https://fernandovelezm-cloud.github.io/Catalogo-Costos/54017.jpg" loading="lazy" onerror="this.style.background='#eee';this.src='';"><div class="card-body"><div class="ref">Ref. 54017</div><div class="precio-normal">$337.000</div><div class="tallas"><span class="talla-chip">T35×1</span><span class="talla-chip">T39×1</span></div></div></div></div><div class="empty" id="empty">Sin productos en esta categoría</div><script>
+function filtrar(grupo) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.g === grupo));
+  var cards = document.querySelectorAll('.card');
+  var n = 0;
+  cards.forEach(c => {
+    var show = grupo === 'Todas' || c.dataset.g === grupo;
+    c.classList.toggle('hidden', !show);
+    if (show) n++;
+  });
+  var em = document.getElementById('empty');
+  em.style.display = n === 0 ? 'block' : 'none';
+}
+</script></body></html>
